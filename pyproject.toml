@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "lendxs"
+version = "0.1.0"
+description = "LendXs Challange January 2022"
+authors = ["David Migoya <dmigoya@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^0.19.2"
+requests = "^2.27.1"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^21.12b0", allow-prereleases = true}
+yapf = "^0.32.0"
+autopep8 = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
