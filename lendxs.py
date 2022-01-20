@@ -2,10 +2,27 @@ from time import sleep
 from dotenv import load_dotenv
 import os
 import requests
+import pika
+import json
+
 
 load_dotenv()
 ACCESS_KEY = os.environ.get('APIKey')
+RABBITMQ_USER =os.environ.get('RABBITMQ_USER')
+RABBITMQ_PASS =os.environ.get('RABBITMQ_PASS')
 
+
+#our RabbitMQ credentials
+credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
+
+params =pika.ConnectionParameters(host='localhost',port=5672,credentials=credentials)
+
+ 
+# Create a global channel variable to hold our channel object
+connection = pika.BlockingConnection(params)
+nairobi_channel = connection.channel()
+#Create a  Queue
+nairobi_channel.queue_declare(queue='lendxs')
 
 #city to query
 target_city = 'Nairobi'
@@ -25,14 +42,38 @@ def getCurrentWeather(url, city, api_key, my_headers):
                                 headers=my_headers)
     #convert response to json object from received string 
     current_weather = response.json()
-    print(current_weather)
+    print("current_weather data received")
     #return the converted  results
     return current_weather
 
+
+
+
+
+def sendToRabbitMq(channel, q_name, message_body):
+    channel.basic_publish(exchange='',
+                      routing_key=q_name,
+                      body=message_body)
+    print("Sent to rabbitmq")
+    
+ 
+#while loop to get the weather data.
 while True:
     try:
-        getCurrentWeather(BASE_URL, target_city, ACCESS_KEY, headers)
+        #get the current waather from Weatherstack API
+        current_weather_data= getCurrentWeather(BASE_URL, target_city, ACCESS_KEY, headers)
+        #pause the loop for 10 minutes
+        
+        #send our data to RabbitMQ qeuee
+        sendToRabbitMq(channel=nairobi_channel, q_name='lendxs', message_body=json.dumps(current_weather_data))
+        
+        #consume  data from RabbitMQ
+        
         sleep(6)
     except Exception as error:
+        #print out error is we get any
         print(error)
         
+        
+
+    
