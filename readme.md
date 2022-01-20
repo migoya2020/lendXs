@@ -13,10 +13,6 @@
 7. open  a second terminal and  run ```python send_lendxs.py```
 
 you should see the  received messages logged on the terminal
-<<<<<<< HEAD
 
-
-
-**by: David Migoya: dmigoya@gmail.com**
-=======
->>>>>>> 80dfbb39b31783c0d6f268b4d91e588ad715d72f
+** by: David Migoya ** 
+```dmigoya@gmail.com```
