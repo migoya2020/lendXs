@@ -57,7 +57,7 @@ while True:
         
         #send our data to RabbitMQ qeuee
         sendToRabbitMq(channel=nairobi_channel, q_name='lendxs', message_body=json.dumps(current_weather_data))
-        sleep(6)
+        sleep(600)
     except Exception as error:
         #print out error is we get any
         print(error)
