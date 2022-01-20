@@ -13,3 +13,7 @@
 7 open  a second terminal and  run python send_lendxs.py
 
 you should see the  received messages logged on the terminal
+
+
+
+**by: David Migoya: dmigoya@gmail.com**
