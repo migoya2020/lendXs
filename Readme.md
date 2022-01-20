@@ -7,12 +7,12 @@
 2. Navigate inside the  lendxs directory
 3. Run ```oetry install```
 4. Activate environment run ```poetry shell```
+5. rename ```.env_example```  to ```.env```
+6. Make sure  RabbitMQ is tunning, or you can fire up the docker version  by running ```docker-compose up```
 
-5. Make sure  RabbitMQ is tunning, or you can fire up the docker version  by running ```docker-compose up```
+7. one one terminal  ```run python consumer_lendxs.py```
 
-6. one one terminal  ```run python consumer_lendxs.py```
-
-7. open  a second terminal and  run ```python send_lendxs.py```
+8. open  a second terminal and  run ```python send_lendxs.py```
 
 you should see the  received messages logged on the terminal
 
