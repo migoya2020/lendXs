@@ -14,5 +14,5 @@
 
 you should see the  received messages logged on the terminal
 
-** by: David Migoya ** 
+**By: David Migoya ** 
 ```dmigoya@gmail.com```
