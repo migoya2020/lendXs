@@ -5,7 +5,7 @@
 -- Note: this project uses python 3.9^
 1. install poetry if you dont have it: https://python-poetry.org/docs/#installing-with-pip
 2. Navigate inside the  lendxs directory
-3. Run ```oetry install```
+3. Run ```poetry install```
 4. Activate environment run ```poetry shell```
 5. rename ```.env_example```  to ```.env```
 6. Make sure  RabbitMQ is tunning, or you can fire up the docker version  by running ```docker-compose up```
